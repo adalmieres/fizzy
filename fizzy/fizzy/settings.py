@@ -18,7 +18,7 @@ LOG_LEVEL = 'INFO'
 #LOG_FILE = './spider.log'
 
 FEED_FORMAT = 'jsonlines'
-FEED_URI = './fizzy.json'
+FEED_URI = '../../data/fizzy.json'
 
 
 

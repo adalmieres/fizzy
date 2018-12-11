@@ -1,5 +1,5 @@
-#JSON output
-fizzy/fizzy.json
+# data
+/data/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
