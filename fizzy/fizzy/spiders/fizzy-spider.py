@@ -16,6 +16,7 @@ class FizzySpider(scrapy.Spider):
 
     def parse_transaction(self, response):
         
+        #transaction data
         txHash = response.css('div#tx::text').extract_first().strip()
         txReceiptStatus = response.css('div.col-sm-9:nth-child(4) > span:nth-child(1) > font:nth-child(1)::text').extract_first().strip()
         blockHeight = response.css('div.col-sm-9:nth-child(6) > a:nth-child(1)::text').extract_first().strip()
@@ -29,18 +30,47 @@ class FizzySpider(scrapy.Spider):
         actualCost = response.css('#ContentPlaceHolder1_spanTxFee::text')[1].extract().strip()
         nonce = response.css('div.col-sm-9:nth-child(24) > span:nth-child(1)::text').extract_first().strip()
         inputData = response.css('#inputdata::text').extract_first()
+        #event data
+        eventName = response.css("#funcname_0::text").extract_first()
+        eventProductId = response.css('#chunk_1_1::text').extract_first()
+        eventFlightId = response.css('#chunk_1_2::text').extract_first()
+        eventPremium = response.css('#chunk_1_3::text').extract_first()
+        eventIndemnity = response.css('#chunk_1_4::text').extract_first()
+        eventNewStatusId = response.css('#chunk_1_5::text').extract_first()
 
-        yield Transaction(
-            txHash = str(txHash),
-            txReceiptStatus = str(txReceiptStatus),
-            blockHeight = str(blockHeight),
-            timeStamp = str(timeStamp),
-            fromAddress = str(fromAddress),
-            value = str(value),
-            gasLimit = str(gasLimit),
-            gasUsed = str(gasUsed),
-            gasPrice = str(gasPrice),
-            actualCost = str(actualCost),
-            nonce = str(nonce),
-            inputData = str(inputData),
+        if str(eventName) is "InsuranceUpdate (" :
+            yield Transaction(
+                txHash = str(txHash),
+                txReceiptStatus = str(txReceiptStatus),
+                blockHeight = str(blockHeight),
+                timeStamp = str(timeStamp),
+                fromAddress = str(fromAddress),
+                value = str(value),
+                gasLimit = str(gasLimit),
+                gasUsed = str(gasUsed),
+                gasPrice = str(gasPrice),
+                actualCost = str(actualCost),
+                nonce = str(nonce),
+                inputData = str(inputData),
+                eventName = str(eventName),
+                eventProductId = str(eventProductId),
+                eventFlightId = str(eventFlightId),
+                eventPremium = str(eventPremium),
+                eventIndemnity = str(eventIndemnity),
+                eventNewStatusId = str(eventNewStatusId),
+            )
+        else :
+            yield Transaction(
+                txHash = str(txHash),
+                txReceiptStatus = str(txReceiptStatus),
+                blockHeight = str(blockHeight),
+                timeStamp = str(timeStamp),
+                fromAddress = str(fromAddress),
+                value = str(value),
+                gasLimit = str(gasLimit),
+                gasUsed = str(gasUsed),
+                gasPrice = str(gasPrice),
+                actualCost = str(actualCost),
+                nonce = str(nonce),
+                inputData = str(inputData),
             )
