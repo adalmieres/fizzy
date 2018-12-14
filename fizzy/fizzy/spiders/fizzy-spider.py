@@ -32,45 +32,29 @@ class FizzySpider(scrapy.Spider):
         inputData = response.css('#inputdata::text').extract_first()
         #event data
         eventName = response.css("#funcname_0::text").extract_first()
-        eventProductId = response.css('#chunk_1_1::text').extract_first()
-        eventFlightId = response.css('#chunk_1_2::text').extract_first()
-        eventPremium = response.css('#chunk_1_3::text').extract_first()
-        eventIndemnity = response.css('#chunk_1_4::text').extract_first()
-        eventNewStatusId = response.css('#chunk_1_5::text').extract_first()
+        eventParam1 = response.css('#chunk_1_1::text').extract_first()
+        eventParam2 = response.css('#chunk_1_2::text').extract_first()
+        eventParam3 = response.css('#chunk_1_3::text').extract_first()
+        eventParam4 = response.css('#chunk_1_4::text').extract_first()
+        eventParam5 = response.css('#chunk_1_5::text').extract_first()
 
-        if str(eventName) is "InsuranceUpdate (" :
-            yield Transaction(
-                txHash = str(txHash),
-                txReceiptStatus = str(txReceiptStatus),
-                blockHeight = str(blockHeight),
-                timeStamp = str(timeStamp),
-                fromAddress = str(fromAddress),
-                value = str(value),
-                gasLimit = str(gasLimit),
-                gasUsed = str(gasUsed),
-                gasPrice = str(gasPrice),
-                actualCost = str(actualCost),
-                nonce = str(nonce),
-                inputData = str(inputData),
-                eventName = str(eventName),
-                eventProductId = str(eventProductId),
-                eventFlightId = str(eventFlightId),
-                eventPremium = str(eventPremium),
-                eventIndemnity = str(eventIndemnity),
-                eventNewStatusId = str(eventNewStatusId),
-            )
-        else :
-            yield Transaction(
-                txHash = str(txHash),
-                txReceiptStatus = str(txReceiptStatus),
-                blockHeight = str(blockHeight),
-                timeStamp = str(timeStamp),
-                fromAddress = str(fromAddress),
-                value = str(value),
-                gasLimit = str(gasLimit),
-                gasUsed = str(gasUsed),
-                gasPrice = str(gasPrice),
-                actualCost = str(actualCost),
-                nonce = str(nonce),
-                inputData = str(inputData),
-            )
+        yield Transaction(
+            txHash = str(txHash),
+            txReceiptStatus = str(txReceiptStatus),
+            blockHeight = str(blockHeight),
+            timeStamp = str(timeStamp),
+            fromAddress = str(fromAddress),
+            value = str(value),
+            gasLimit = str(gasLimit),
+            gasUsed = str(gasUsed),
+            gasPrice = str(gasPrice),
+            actualCost = str(actualCost),
+            nonce = str(nonce),
+            inputData = str(inputData),
+            eventName = str(eventName),
+            eventParam1 = str(eventParam1),
+            eventParam2 = str(eventParam2),
+            eventParam3 = str(eventParam3),
+            eventParam4 = str(eventParam4),
+            eventParam5 = str(eventParam5),
+        )

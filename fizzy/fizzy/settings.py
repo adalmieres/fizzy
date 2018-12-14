@@ -19,10 +19,10 @@ LOG_LEVEL = 'INFO'
 
 #HTTP_PROXY = 'http://127.0.0.1:8118'
 
+import os
 FEED_FORMAT = 'jsonlines'
-FEED_URI = '../../data/fizzy.json'
-
-
+dirname = os.path.dirname(__file__)
+FEED_URI = os.path.join(dirname, '../../data/fizzy.json')
 
 
 
