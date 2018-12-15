@@ -22,7 +22,7 @@ class FizzySpider(scrapy.Spider):
         blockHeight = response.css('div.col-sm-9:nth-child(6) > a:nth-child(1)::text').extract_first().strip()
         timeStamp = response.css('div.col-sm-9:nth-child(8)::text').extract_first().strip()
         fromAddress = response.css('div.col-sm-9:nth-child(10) > a:nth-child(1)::text').extract_first().strip()
-        toAddress = response.css('.wordwrap::text').extract_first().strip()
+        toAddress = response.css('a.wordwrap::text').extract_first().strip()
         value = response.css('#ContentPlaceHolder1_spanValue::text').extract_first().strip()
         gasLimit = response.css('#ContentPlaceHolder1_spanGasLimit::text').extract_first().strip()
         gasUsed = response.css('#ContentPlaceHolder1_spanGasUsedByTxn::text').extract_first().strip()
@@ -44,6 +44,7 @@ class FizzySpider(scrapy.Spider):
             blockHeight = str(blockHeight),
             timeStamp = str(timeStamp),
             fromAddress = str(fromAddress),
+            toAddress = str(toAddress),
             value = str(value),
             gasLimit = str(gasLimit),
             gasUsed = str(gasUsed),
