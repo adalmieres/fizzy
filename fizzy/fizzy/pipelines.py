@@ -9,3 +9,9 @@
 class FizzyPipeline(object):
     def process_item(self, item, spider):
         return item
+
+class DefaultValuesPipeline(object):
+    def process_item(self, item, spider):
+        for field in item.fields:
+            item.setdefault(field, None)
+        return item
