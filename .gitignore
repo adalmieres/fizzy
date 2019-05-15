@@ -1,5 +1,7 @@
 # data
 data/fizzy*
+data/eventLog.json
+data/transactions.json
 lab/*.png
 lab/*.svg
 
@@ -109,3 +111,6 @@ venv.bak/
 .mypy_cache/
 
 *.7z
+
+# API KEYS
+api_key.json
