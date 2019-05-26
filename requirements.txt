@@ -3,3 +3,6 @@ jupyterlab
 pandas
 matplotlib
 requests
+geopy
+calmap
+
