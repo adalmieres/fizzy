@@ -1,4 +1,3 @@
-Scrapy
 jupyterlab
 pandas
 matplotlib
